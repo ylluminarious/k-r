@@ -1,0 +1,1 @@
+These files just contain (undocumented) micro-optimizations of some exercises and they're just here for fun (like everything in this project).
