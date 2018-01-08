@@ -1,6 +1,5 @@
 /* Exercise 2-6: write `setbits' function which is analagous to `getbits' */
 #include <stdio.h>
-#include <limits.h>
 
 unsigned getbits(unsigned x, int p, int n);
 unsigned setbits(unsigned x, int p, int n, unsigned y);
