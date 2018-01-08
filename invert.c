@@ -7,7 +7,7 @@ unsigned invert(unsigned x, int p, int n);
 
 int main()
 {
-	printf("%o", invert(0356, 3, 4));
+	printf("%o", invert(0356, 6, 5));
 }
 
 unsigned getbits(unsigned x, int p, int n)
@@ -17,7 +17,7 @@ unsigned getbits(unsigned x, int p, int n)
 
 unsigned setbits(unsigned x, int p, int n, unsigned y)
 {
-	return (getbits(y, p, n) | (getbits(x, p+n, n) << n));
+	return ((getbits(x, p, n) << (p+1-n) ^ x) | getbits(y, p, n) << (p+1-n));
 }
 
 unsigned invert(unsigned x, int p, int n)
