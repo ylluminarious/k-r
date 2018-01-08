@@ -6,7 +6,7 @@ unsigned setbits(unsigned x, int p, int n, unsigned y);
 
 int main()
 {
-	printf("%o", setbits(0356, 3, 4, 0335));
+	printf("%o", setbits(0356, 6, 5, 0335));
 }
 
 unsigned getbits(unsigned x, int p, int n)
@@ -17,15 +17,21 @@ unsigned getbits(unsigned x, int p, int n)
 unsigned setbits(unsigned x, int p, int n, unsigned y)
 {
 /*
-  get the low-end bits of y
-  (we have automatically zeroed out the high-end bits thereby)
-  get the high-end bits of x
-  left-shift those high bits so that they're where y's high-bits were
-  IOR the two values together
-
   I originally envisioned an algo in which you shift the leftmost bits out,
   and then you somehow set the remaining bits...unfortunately shifting is
-  different per CPU and it wasn't a very well-thought-out plan anyway
+  different per CPU and I'm not sure how I would have set the bits now that
+  I think of it anyway
 */
-	return (getbits(y, p, n) | (getbits(x, p+n, n) << n));
+
+/*
+get the undesired bits of x
+shift them by p+1-n
+XOR that value with x
+(this zeroes out the undesired bits from x)
+get the desired bits from y
+also shift them by p+1-n
+IOR the two values together
+this gives x with those y bits turned on
+*/
+	return ((getbits(x, p, n) << (p+1-n) ^ x) | getbits(y, p, n) << (p+1-n));
 }
