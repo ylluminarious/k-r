@@ -1,1 +1,1 @@
-These files just contain (undocumented) micro-optimizations of some exercises and they're just here for fun (like everything in this project).
+These files just contain (undocumented) micro-optimizations of some exercises and they're just here for fun (like everything in this project). Some of them also exist to see what the underlying machine code of the exercises looks like.
